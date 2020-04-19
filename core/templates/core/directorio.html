@@ -1,0 +1,135 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Inicio{% endblock %}
+{% block topBar %}
+{% endblock %}
+{% block header %}
+<header id="header" data-fullwidth="true">
+{% endblock %}
+{% block content %}
+<section id="page-title">
+    <div class="container">
+        <div class="page-title">
+            <h1>Directorio Telefónico</h1>
+            <span>COOPERATIVAS DE TRANSPORTE INTERPROVINCIALES<br>ECUADOR </span>
+        </div>
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="#">Trasporte</a> </li>
+                <li class="active"><a href="#">Directorio Telefónico</a> </li>
+                
+            </ul>
+        </div>
+    </div>
+</section>
+<section id="page-content" class="no-sidebar">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <table id="datatable" class="table table-bordered table-hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Cooperativa</th>
+                            <th>Teléfono Matriz</th>
+                            <th>Fax</th>
+                            <th>Otros Teléfonos</th>
+                            <th>E-mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AMAZONAS</td>
+                            <td>062887213</td>
+                            <td></td>
+                            <td></td>
+                            <td>correoelectronico@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>JUMANDY</td>
+                            <td>062886679</td>
+                            <td></td>
+                            <td></td>
+                            <td>correoelectronico@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>EXPRESS BAÑOS</td>
+                            <td>062886256</td>
+                            <td></td>
+                            <td></td>
+                            <td>correoelectronico@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>FLOTA PELILEO</td>
+                            <td>062886502</td>
+                            <td></td>
+                            <td></td>
+                            <td>correoelectronico@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>TRANSPORTE RIOBAMBA</td>
+                            <td>062887083</td>
+                            <td></td>
+                            <td></td>
+                            <td>correoelectronico@gmail.com</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Date</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block scripts %}
+
+<script src="{% static 'core/plugins/popper/popper.min.js' %}"></script>
+
+<script src="{% static 'core/plugins/datatables/datatables.min.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        var table = $('#datatable').DataTable({
+            buttons: [{
+                extend: 'print',
+                title: 'Test Data export',
+                exportOptions: {
+                    columns: "thead th:not(.noExport)"
+                }
+            }, {
+                extend: 'pdf',
+                title: 'Test Data export',
+                exportOptions: {
+                    columns: "thead th:not(.noExport)"
+                }
+            }, {
+                extend: 'excel',
+                title: 'Test Data export',
+                exportOptions: {
+                    columns: "thead th:not(.noExport)"
+                }
+            }, {
+                extend: 'csv',
+                title: 'Test Data export',
+                exportOptions: {
+                    columns: "thead th:not(.noExport)"
+                }
+            }, {
+                extend: 'copy',
+                title: 'Test Data export',
+                exportOptions: {
+                    columns: "thead th:not(.noExport)"
+                }
+            }]
+        });
+        table.buttons().container().appendTo('#export_buttons');
+        $("#export_buttons .btn").removeClass('btn-secondary').addClass('btn-light');
+    });
+</script>
+{% endblock %}

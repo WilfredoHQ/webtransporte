@@ -1,0 +1,174 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Inicio{% endblock %}
+{% block topBar %}
+<div id="topbar" class="topbar-transparent dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="top-menu">
+                    <li><a href="#">Telf: 0939693348</a></li>
+                    <li><a href="#">Email: info@otechecuador.com</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 d-none d-sm-block">
+                <div class="social-icons social-icons-colored-hover">
+                    <ul>
+                        <li class="social-facebook"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="social-twitter"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li class="social-google"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                        <li class="social-linkedin"><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                        <li class="social-youtube"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block header %}
+<header id="header" data-transparent="true" class="dark submenu-light">
+{% endblock %}
+{% block content %}
+<section class="fullscreen" id="vegas-slideshow">
+    <div class="bg-overlay"></div>
+    <div class="container-fullscreen">
+        <div class="text-middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="text-light">
+                            <h2 class="text-medium no-margin text-colored">HORARIO DE</h2>
+                            <h2 class="text-medium no-margin">TRANSPORTES INTERPROVINCIALES</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div id="book">
+                            <form method="post" action="#">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <h2 style="color: #fff">Encuentra trasporte</h2>
+                                            <label style="color: #fff">VIAJE DESDE</label>
+                                            <select class="form-control" name="room_type" id="room_type">
+                                                <option value="">Seleccione ciudad de origen</option>
+
+                                                <option value="Tena">Tena</option>
+
+                                                <option value="Ambato">Ambato</option>
+
+                                                <option value="Riobamba">Riobamba</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label style="color: #fff">HASTA</label>
+                                            <select class="form-control" name="room_type" id="room_type">
+                                                <option value="">Seleccione ciudad de destino</option>
+
+                                                <option value="Tena">Tena</option>
+
+                                                <option value="Ambato">Ambato</option>
+
+                                                <option value="Riobamba">Riobamba</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <button class="btn btn-colored float-right">Consultar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="content-wrapper">
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title text-center">Listado de salidas</h3>
+            </div>
+            <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                    <th>Cooperativa</th>
+                    <th>Origen</th>
+                    <th>Ruta</th>
+                    <th>Destino</th>
+                    <th>Horario</th>
+                    <th>Precio</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+{% endblock %}
+{% block scripts %}
+<script type='text/javascript' src='//maps.googleapis.com/maps/api/js?key=AIzaSyAZIus-_huNW25Jl7RPmHgoGZjD5udgBMI'></script>
+<script type="text/javascript" src="{% static 'core/plugins/gmap3/gmap3.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'core/plugins/gmap3/map-styles.js' %}"></script>
+
+
+<!--VEGAS SLIDESHOW-->
+<link href="{% static 'core/plugins/vegas/vegas.min.css' %}" rel="stylesheet">
+<script src="{% static 'core/plugins/vegas/vegas.min.js' %}"></script>
+
+<script>
+    $(function () {
+        $("#vegas-slideshow").vegas({
+            delay: 4000,
+            transition: 'fade2',
+            transitionDuration: 1000,
+            slides: [{
+                src: "{% static 'core/images/slide/baños.jpg' %}"
+            }, {
+                src: "{% static 'core/images/slide/jumandy.jpg' %}"
+            },{
+                src: "{% static 'core/images/slide/amazonas.jpg' %}"}]
+        });
+    });
+</script>
+
+<!-- Date & Time Picker -->
+<link rel="stylesheet" href="{% static 'core/plugins/daterangepicker/daterangepicker.css' %}" type="text/css" />
+<script src="{% static 'core/plugins/moment/moment.min.js' %}"></script>
+<script src="{% static 'core/plugins/daterangepicker/daterangepicker.js' %}"></script>
+
+<!-- Date Range Picker trigger code -->
+<script>
+    $(function () {
+        $('input[name="fromDate"]').daterangepicker({
+            singleDatePicker: true,
+            /* showDropdowns: true,*/
+        });
+
+        $('input[name="toDate"]').daterangepicker({
+            singleDatePicker: true,
+            /* showDropdowns: true,*/
+        });
+
+    });
+</script>
+{% endblock %}

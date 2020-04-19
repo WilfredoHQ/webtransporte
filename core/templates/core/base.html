@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        {% load static %}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />    
+        <meta name="author" content="Oscar Enrique Diaz" />    
+        <meta name="description" content="sitio de horario de trasporte interprovicial de Ecuador">
+        <link rel="icon" type="image/png" href="{% static 'core/images/logo.jpg' %}">   
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Document title -->
+        <title>{% block title %}{% endblock %}</title>
+        <link href="{% static 'core/plugins/datatables/datatables.min.css' %}" rel='stylesheet' />
+        <!-- Stylesheets & Fonts -->
+        <link href="{% static 'core/css/plugins.css' %}" rel="stylesheet">
+        <link href="{% static 'core/css/style.css' %}" rel="stylesheet">
+    
+        <!-- Template color -->
+        <link href="{% static 'core/css/color-variations/red.css' %}" rel="stylesheet" type="text/css" media="screen">
+        <!-- CSS HOTEL STYLE -->
+        <link rel="stylesheet" type="text/css" href="{% static 'core/css/trasporte-style' %}" media="screen" />
+    </head>
+    <body>
+        <div class="body-inner">
+            {% block topBar %}{% endblock %}
+            <!-- Header -->
+            {% block header %}
+            <header id="header" data-transparent="true" data-fullwidth="true" class="dark submenu-light">
+            {% endblock %}
+                <div class="header-inner">
+                    <div class="container">
+                        <!--Logo-->
+                        <div id="logo">
+                            <a href="{% url 'home' %}">
+                                <img src="{% static 'core/images/logo.jpg' %}" class="logo-default">
+                                <img src="{% static 'core/images/logo.jpg' %}" class="logo-dark">
+                            </a>
+                        </div>
+                        <!--End: Logo-->
+                        <!-- Search -->
+                        <div id="search"><a id="btn-search-close" class="btn-search-close" aria-label="Close search form"><i class="icon-x"></i></a>
+                            <form class="search-form" action="search-results-page.html" method="get">
+                                <input class="form-control" name="q" type="text" placeholder="Type & Search..." />
+                                <span class="text-muted">Start typing & press "Enter" or "ESC" to close</span>
+                            </form>
+                        </div>
+                        <div class="header-extras">
+                            <ul>
+                                <li>
+                                    <a id="btn-search" href="#"> <i class="icon-search"></i></a>
+                                </li>
+                                <li>
+                                    <div class="p-dropdown">
+                                        <a href="#"><i class="icon-globe"></i><span>ES</span></a>
+                                        <ul class="p-dropdown-content">
+                                            <li><a href="#">French</a></li>
+                                            <li><a href="#">Spanish</a></li>
+                                            <li><a href="#">English</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="mainMenu-trigger">
+                            <a class="lines-button x"><span class="lines"></span></a>
+                        </div>
+                        <div id="mainMenu">
+                            <div class="container">
+                                <nav>
+                                    <ul>
+                                        <li><a href="{% url 'home' %}">Trasporte</a></li>
+                                        <li><a href="{% url 'directory' %}">Directorio</a></li>
+                                        <li><a href="{% url 'about' %}">Nosotros</a></li>
+                                        <li><a href="{% url 'contact' %}">Contacto</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            {% block content %}{% endblock %}
+
+            <footer id="footer">
+                <div class="footer-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="widget">
+
+                                    <div class="widget-title">Plan de Movilidad Sostenible Napo</div>
+                                    <p class="mb-5">El presente trabajo describe la situación actual de la Movilidad en el sector urbano del cantón Archidona, además de las correspondientes alternativas para el mejoramiento y/o solución a la problemática existente en lo referente a la seguridad ciudadana. <br>
+                                        Todos los Derechos Reservados. Copyright © 2020. OTECH SOLUCIONES INFORMATICAS.</p>
+                                
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="widget">
+                                            <div class="widget-title">Redes sociales</div>
+                                            <ul class="list">
+                                                <li><a href="#">Facebook</a></li>
+                                                <li><a href="#">Instagram</a></li>
+                                                <li><a href="#">Twitter</a></li>
+                                                <li><a href="#">whatsApp</a></li>
+                                            
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="widget">
+                                            <div class="widget-title">Paginas</div>
+                                            <ul class="list">
+                                                <li><a href="#">Trasporte</a></li>
+                                                <li><a href="#">Directorio</a></li>
+                                                <li><a href="#">Nosotros</a></li>
+                                                <li><a href="#">Nosotros</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="widget">
+                                            <div class="widget-title">Soporte</div>
+                                            <ul class="list">
+                                                <li><a href="#">Help Desk</a></li>
+                                                <li><a href="#">Documentacion</a></li>
+                                                <li><a href="#">Contacto</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright-content">
+                    <div class="container">
+                        <div class="copyright-text text-center">&copy; 2020 OTECH SOLUCIONES INFORMATICAS<a href="www.otechecuador.com" target="_blank" rel="noopener"> DESARROLLADO POR OSCAR DIAZ</a> </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+
+        <script src="{% static 'core/js/jquery.js' %}"></script>
+        <script src="{% static 'core/js/plugins.js' %}"></script>
+
+        <script src="{% static 'core/js/functions.js' %}"></script>
+
+        {% block scripts %}{% endblock %}
+    </body>
+</html>
