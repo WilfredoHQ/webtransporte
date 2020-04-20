@@ -1,7 +1,7 @@
 from django.urls import path
 
-from .views import DirectoryPageView
+from .views import DirectoryListView
 
 urlpatterns = [
-    path('', DirectoryPageView.as_view() , name='directory'),
+    path('', DirectoryListView.as_view() , name='directory'),
 ]

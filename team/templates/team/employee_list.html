@@ -1,0 +1,68 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Inicio{% endblock %}
+{% block topBar %}
+{% endblock %}
+{% block content %}
+<section id="page-title" data-bg-parallax="{% static 'core/images/nosotros.jpg' %}">
+    <div class="bg-overlay"></div>
+    <div class="container">
+        <div class="page-title">
+            <h1 class="text-uppercase text-medium">Nosotros</h1>
+            <!--<span>Work is easy when you have all tools around you!</span><-->
+        </div>
+    </div>
+</section>
+<section class="p-b-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading-text heading-section">
+                    <center><h2>Plan de Movilidad Sostenible Napo</h2></center>
+                    <span class="lead">El presente trabajo describe la situación actual de la Movilidad en el sector urbano del cantón Archidona, además de las correspondientes alternativas para el mejoramiento y/o solución a la problemática existente en lo referente a la seguridad ciudadana.  </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="page-content" class="background-grey">
+    <div class="heading-text heading-section text-center">
+        <h2>NUESTRO EQUIPO</h2>
+    </div>
+    <div class="carousel team-members team-members-shadow" data-items="3">
+        {% for employee in employee_list %}
+            <div class="team-member">
+                <div class="team-image">
+                    <img src="{{ employee.avatar.url }}">
+                </div>
+                <div class="team-desc">
+                    <h3>{{ employee.name }}</h3>
+                    <span>{{ employee.job }}</span>
+                    <p>
+                        {{ employee.description }}
+                    </p>
+                    <div class="align-center">
+                        <a class="btn btn-xs btn-slide btn-light" href="{{ employee.facebook }}">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span></a>
+                        <a class="btn btn-xs btn-slide btn-light" href="{{ employee.twitter }}" data-width="100">
+                            <i class="fab fa-twitter"></i>
+                            <span>Twitter</span></a>
+                        <a class="btn btn-xs btn-slide btn-light" href="{{ employee.instagram }}" data-width="118">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span></a>
+                        <a class="btn btn-xs btn-slide btn-light" href="mailto:{{ employee.mail }}" data-width="80">
+                            <i class="icon-mail"></i>
+                            <span>Mail</span></a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript" src="{% static 'core/plugins/gmap3/gmap3.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'core/plugins/gmap3/map-styles.js' %}"></script>
+{% endblock %}

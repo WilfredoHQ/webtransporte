@@ -17,7 +17,6 @@
             <ul>
                 <li><a href="#">Trasporte</a> </li>
                 <li class="active"><a href="#">Directorio Telefónico</a> </li>
-                
             </ul>
         </div>
     </div>
@@ -37,41 +36,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>AMAZONAS</td>
-                            <td>062887213</td>
-                            <td></td>
-                            <td></td>
-                            <td>correoelectronico@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <td>JUMANDY</td>
-                            <td>062886679</td>
-                            <td></td>
-                            <td></td>
-                            <td>correoelectronico@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <td>EXPRESS BAÑOS</td>
-                            <td>062886256</td>
-                            <td></td>
-                            <td></td>
-                            <td>correoelectronico@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <td>FLOTA PELILEO</td>
-                            <td>062886502</td>
-                            <td></td>
-                            <td></td>
-                            <td>correoelectronico@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <td>TRANSPORTE RIOBAMBA</td>
-                            <td>062887083</td>
-                            <td></td>
-                            <td></td>
-                            <td>correoelectronico@gmail.com</td>
-                        </tr>
+                        {% for cooperative in cooperative_list %}
+                            <tr>
+                                <td>{{ cooperative.name }}</td>
+                                <td>{{ cooperative.phone }}</td>
+                                <td>{{ cooperative.fax }}</td>
+                                <td>{{ cooperative.phone2 }}</td>
+                                <td>{{ cooperative.mail }}</td>
+                            </tr>
+                        {% endfor %}
                     </tbody>
                     <tfoot>
                         <tr>

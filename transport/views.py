@@ -1,6 +1,7 @@
-from django.views.generic.base import TemplateView
+from django.views.generic.list import ListView
+from .models import Cooperative
 
 # Create your views here.
 
-class DirectoryPageView(TemplateView):
-    template_name = "core/directorio.html"
+class DirectoryListView(ListView):
+    model = Cooperative
