@@ -17,6 +17,7 @@ class Cooperative(models.Model):
     def __str__(self):
         return self.name
 
+
 class City(models.Model):
     name = models.CharField(max_length=50, verbose_name='Nombre')
 
@@ -55,4 +56,4 @@ class Schedule(models.Model):
         ordering = ['hour']
 
     def __str__(self):
-        return self.travel.cooperative.name
+        return ('Empresa:' + self.travel.cooperative.name + ' | Ruta:' + self.travel.origin.name + '-' + self.travel.destination.name)
