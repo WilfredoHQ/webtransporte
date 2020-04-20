@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'team',
-    'transport'
+    'team.apps.TeamConfig',
+    'transport.apps.TransportConfig'
 ]
 
 MIDDLEWARE = [
