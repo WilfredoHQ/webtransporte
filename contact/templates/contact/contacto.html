@@ -23,42 +23,54 @@
             <div class="col-lg-6">
                 <h3 class="text-uppercase">Ponerse en contacto</h3>
                 <div class="m-t-30">
-                    <!-- <form class="widget-contact-form" novalidate action="include/contact-form.php" role="form" method="post">
+
+                    {% if 'ok' in request.GET %}
+                    <p style="color: teal;"><b>Su mensaje se ha enviado correctamente</b></p>
+                    {% elif 'fail' in request.GET %}
+                    <p style="color: crimson;"><b>Algo ha fallado intente nuevamente por favor</b></p>
+                    {% endif %}
+
+                    <!-- <form action="" method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" value="Enviar">
+                    </form> -->
+
+                    <form class="widget-contact-form" novalidate action="" role="form" method="POST">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="name">Nombre</label>
-                                <input type="text" aria-required="true" name="widget-contact-form-name" required class="form-control required name" placeholder="Ingrese su nombre">
+                                <!-- <input type="text" aria-required="true" name="widget-contact-form-name" required class="form-control required name" placeholder="Ingrese su nombre"> -->
+                                {{ form.name }}
+                                {{ form.name.errors }}
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="email">Email</label>
-                                <input type="email" aria-required="true" name="widget-contact-form-email" required class="form-control required email" placeholder="Ingrese su correo electronico">
+                                <!-- <input type="email" aria-required="true" name="widget-contact-form-email" required class="form-control required email" placeholder="Ingrese su correo electronico"> -->
+                                {{ form.email }}
+                                {{ form.email.errors }}
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label for="subject">Asunto</label>
-                                <input type="text" name="widget-contact-form-subject" required class="form-control required" placeholder="Asunto...">
+                                <!-- <input type="text" name="widget-contact-form-subject" required class="form-control required" placeholder="Asunto..."> -->
+                                {{ form.case }}
+                                {{ form.case.errors }}
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="message">Mensaje</label>
-                            <textarea type="text" name="widget-contact-form-message" required rows="5" class="form-control required" placeholder="Mensaje..."></textarea>
-                        </div> -->
+                            <!-- <textarea type="text" name="widget-contact-form-message" required rows="5" class="form-control required" placeholder="Mensaje..."></textarea> -->
+                            {{ form.content }}
+                            {{ form.content.errors }}
+                        </div>
                         <!--  <div class="form-group">
                             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
                             <div class="g-recaptcha" data-sitekey="6LddCxAUAAAAAKOg0-U6IprqOZ7vTfiMNSyQT2-M"></div>
                         </div>  -->
-                        <!-- <button class="btn" type="submit" id="form-submit"><i class="fa fa-paper-plane"></i>&nbsp;Enviar Mensaje</button>
-                    </form> -->
-
-                    {% if 'ok' in request.GET %}
-                    <p><b>Su mensaje se ha enviado correctamente</b></p>
-                    {% endif %}
-
-                    <form action="" method="POST">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <input type="submit" value="Enviar">
+                        <button class="btn" type="submit" id="form-submit"><i class="fa fa-paper-plane"></i>&nbsp;Enviar Mensaje</button>
                     </form>
 
                 </div>

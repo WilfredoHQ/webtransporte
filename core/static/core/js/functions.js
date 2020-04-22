@@ -1116,77 +1116,77 @@ var INSPIRO = {},
       })
     },
 
-    formAjaxProcessing: function () {
-      var $ajaxForm = $(".widget-contact-form:not(.custom-js), .ajax-form:not(.custom-js)")
-      if ($ajaxForm.length > 0) {
-        $ajaxForm.each(function () {
-          var elem = $(this),
-            elemSuccessMessage = elem.attr("data-success-message") || "We have <strong>successfully</strong> received your Message and will get Back to you as soon as possible.",
-            elemCustomRedirectPage = elem.attr("data-success-page");
-          var button = elem.find("button#form-submit"),
-            buttonText = button.html()
-          var validation = Array.prototype.filter.call(elem, function (form) {
-            form.addEventListener(
-              "submit",
-              function (event) {
-                if (form[0].checkValidity() === false) {
-                  event.preventDefault()
-                  event.stopPropagation()
-                }
-                form.classList.add("was-validated")
-                return false
-              },
-              false
-            )
-          })
-          elem.submit(function (event) {
-            event.preventDefault()
-            var post_url = $(this).attr("action")
-            var request_method = $(this).attr("method")
-            var form_data = $(this).serialize()
-            if (elem[0].checkValidity() === false) {
-              event.stopPropagation()
-              elem.addClass("was-validated")
-            } else {
-              $(elem).removeClass("was-validated")
-              button.html('<i class="icon-loader fa-spin"> </i> Sending...')
-              $.ajax({
-                url: post_url,
-                type: request_method,
-                data: form_data,
-                success: function (text) {
-                  if (text.response == "success") {
-                    if (elem.find(".g-recaptcha").children("div").length > 0) {
-                      grecaptcha.reset()
-                    }
-                    $(elem)[0].reset()
-                    button.html(buttonText)
-                    if (elemCustomRedirectPage) {
-                      window.location.href = elemCustomRedirectPage
-                    } else {
-                      $.notify({
-                        message: elemSuccessMessage
-                      }, {
-                        type: "success"
-                      })
-                    }
-                  } else {
-                    $.notify({
-                      message: elem.attr("data-error-message") || text.message
-                    }, {
-                      type: "danger"
-                    })
-                    var t = setTimeout(function () {
-                      button.html(buttonText)
-                    }, 1000)
-                  }
-                }
-              })
-            }
-        });
-      });
-      }
-    },
+    // formAjaxProcessing: function () {
+    //   var $ajaxForm = $(".widget-contact-form:not(.custom-js), .ajax-form:not(.custom-js)")
+    //   if ($ajaxForm.length > 0) {
+    //     $ajaxForm.each(function () {
+    //       var elem = $(this),
+    //         elemSuccessMessage = elem.attr("data-success-message") || "We have <strong>successfully</strong> received your Message and will get Back to you as soon as possible.",
+    //         elemCustomRedirectPage = elem.attr("data-success-page");
+    //       var button = elem.find("button#form-submit"),
+    //         buttonText = button.html()
+    //       var validation = Array.prototype.filter.call(elem, function (form) {
+    //         form.addEventListener(
+    //           "submit",
+    //           function (event) {
+    //             if (form[0].checkValidity() === false) {
+    //               event.preventDefault()
+    //               event.stopPropagation()
+    //             }
+    //             form.classList.add("was-validated")
+    //             return false
+    //           },
+    //           false
+    //         )
+    //       })
+    //       elem.submit(function (event) {
+    //         event.preventDefault()
+    //         var post_url = $(this).attr("action")
+    //         var request_method = $(this).attr("method")
+    //         var form_data = $(this).serialize()
+    //         if (elem[0].checkValidity() === false) {
+    //           event.stopPropagation()
+    //           elem.addClass("was-validated")
+    //         } else {
+    //           $(elem).removeClass("was-validated")
+    //           button.html('<i class="icon-loader fa-spin"> </i> Sending...')
+    //           $.ajax({
+    //             url: post_url,
+    //             type: request_method,
+    //             data: form_data,
+    //             success: function (text) {
+    //               if (text.response == "success") {
+    //                 if (elem.find(".g-recaptcha").children("div").length > 0) {
+    //                   grecaptcha.reset()
+    //                 }
+    //                 $(elem)[0].reset()
+    //                 button.html(buttonText)
+    //                 if (elemCustomRedirectPage) {
+    //                   window.location.href = elemCustomRedirectPage
+    //                 } else {
+    //                   $.notify({
+    //                     message: elemSuccessMessage
+    //                   }, {
+    //                     type: "success"
+    //                   })
+    //                 }
+    //               } else {
+    //                 $.notify({
+    //                   message: elem.attr("data-error-message") || text.message
+    //                 }, {
+    //                   type: "danger"
+    //                 })
+    //                 var t = setTimeout(function () {
+    //                   button.html(buttonText)
+    //                 }, 1000)
+    //               }
+    //             }
+    //           })
+    //         }
+    //     });
+    //   });
+    //   }
+    // },
     wizard: function () {
       //Show hide password
     },
