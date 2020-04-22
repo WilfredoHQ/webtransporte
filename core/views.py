@@ -2,8 +2,6 @@ from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from transport.models import Cooperative, City, Travel, Schedule
 
-from django.http import JsonResponse
-
 # Create your views here.
 
 class HomePageView(ListView):
@@ -23,7 +21,3 @@ class HomePageView(ListView):
         context['cities'] = City.objects.all()
         context['schedule'] = Schedule.objects.all()
         return context
-
-
-class ContactPageView(TemplateView):
-    template_name = "core/contacto.html"
